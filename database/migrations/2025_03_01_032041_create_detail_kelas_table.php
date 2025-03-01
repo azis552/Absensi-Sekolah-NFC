@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('absensis', function (Blueprint $table) {
+        Schema::create('detail_kelas', function (Blueprint $table) {
             $table->id();
-            $table->string('uuid');
-            $table->enum('status', ['masuk','keluar']);
-            $table->timestamp('waktu');
+            $table->unsignedBigInteger('id_user');
+            $table->unsignedBigInteger('id_kelas');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('id_kelas')->references('id')->on('kelas')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('absensis');
+        Schema::dropIfExists('detail_kelas');
     }
 };

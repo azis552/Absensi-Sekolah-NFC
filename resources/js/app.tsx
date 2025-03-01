@@ -1,8 +1,18 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+import { BrowserRouter as Router } from "react-router-dom";
+import AppRoutes from "./routes";
+import Footer from "./components/Footer";
 
-function App() {
-    return <h1>Hello, Laravel + Vite + React!</h1>;
+export default function app() {
+    return (
+        <Router>
+            <div className="flex flex-col h-screen bg-gray-100">
+                <div className="flex-grow flex items-center justify-center">
+                <AppRoutes />
+                </div>
+                <Footer />
+            </div>
+            
+
+        </Router>
+    );
 }
-
-ReactDOM.createRoot(document.getElementById("app")!).render(<App />);
